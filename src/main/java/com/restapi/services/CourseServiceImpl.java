@@ -33,7 +33,7 @@ public class CourseServiceImpl implements CourseService{
     public Course updateCourse(int id, Course course) {
 
         Course existingCourse = getCourseById(id);
-        BeanUtils.copyProperties(course, existingCourse, "id");
+        BeanUtils.copyProperties(course, existingCourse, "courseId");
         return courseRepository.saveAndFlush(existingCourse);
     }
 

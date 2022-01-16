@@ -7,13 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
-public class TrainerServiceImpl implements  TrainerService{
-
+public class TrainerServiceImpl implements TrainerService{
     @Autowired
     private TrainerRepository trainerRepository;
-
     @Override
     public List<Trainer> getAllTrainers() {
         return trainerRepository.findAll();
@@ -31,9 +28,8 @@ public class TrainerServiceImpl implements  TrainerService{
 
     @Override
     public Trainer updateTrainer(int id, Trainer trainer) {
-
-        Trainer existingTrainer = getTrainerById(id);
-        BeanUtils.copyProperties(trainer, existingTrainer, "id");
+        Trainer existingTrainer=getTrainerById(id);
+        BeanUtils.copyProperties(trainer,existingTrainer,"trainerId");
         return trainerRepository.saveAndFlush(existingTrainer);
     }
 
